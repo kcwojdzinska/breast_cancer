@@ -11,11 +11,8 @@ def prepare_dataset_to_split(ratio=0.8):
     sum_of_samples_in_dataset = len(M) + len(B)
     perc_of_M_samples_in_dataset = round(len(M)/(len(M)+len(B)),2)
     len_train_set = round(ratio * sum_of_samples_in_dataset)
-    len_test_set = round(sum_of_samples_in_dataset - len_train_set)
     num_of_M_samples_in_train_set = round(perc_of_M_samples_in_dataset * len_train_set)
-    num_of_M_samples_in_test_set = round(perc_of_M_samples_in_dataset * len_test_set)
     num_of_B_samples_in_train_set = len_train_set - num_of_M_samples_in_train_set
-    num_of_B_samples_in_test_set = len_test_set - num_of_M_samples_in_test_set
     B_dataframe = sorted_data.iloc[:len(B), :]
     M_dataframe = sorted_data.iloc[len(B):, :]
     B_dataframe_train = B_dataframe.iloc[:num_of_B_samples_in_train_set:, :]
@@ -28,8 +25,15 @@ def prepare_dataset_to_split(ratio=0.8):
     train.sample(frac=1)
     test = pd.concat(test_frame)
     test.sample(frac=1)
-    x_train = train.drop([column_with_labels], axis=1)
-    x_test = test.drop([column_with_labels], axis=1)
-    y_train = train[column_with_labels]
-    y_test = test[column_with_labels]
-    return x_train, x_test, y_train, y_test
+    train.to_csv('train_set.csv', encoding='utf-8', index=False)
+    test.to_csv('test_set.csv', encoding='utf-8', index=False)
+    # x_train = train.drop([column_with_labels], axis=1)
+    # x_test = test.drop([column_with_labels], axis=1)
+    # y_train = train[column_with_labels]
+    # y_test = test[column_with_labels]
+    # return x_train, x_test, y_train, y_test
+    return train, test
+
+
+if __name__ == '__main__':
+    prepare_dataset_to_split()
