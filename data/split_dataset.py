@@ -27,13 +27,4 @@ def prepare_dataset_to_split(ratio=0.8):
     test.sample(frac=1)
     train.to_csv('train_set.csv', encoding='utf-8', index=False)
     test.to_csv('test_set.csv', encoding='utf-8', index=False)
-    # x_train = train.drop([column_with_labels], axis=1)
-    # x_test = test.drop([column_with_labels], axis=1)
-    # y_train = train[column_with_labels]
-    # y_test = test[column_with_labels]
-    # return x_train, x_test, y_train, y_test
     return train, test
-
-
-if __name__ == '__main__':
-    prepare_dataset_to_split()
