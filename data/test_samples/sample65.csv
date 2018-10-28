@@ -1,0 +1,31 @@
+diagnosis,0.0
+radius_mean,11.89
+texture_mean,18.35
+perimeter_mean,77.32
+area_mean,432.2
+smoothness_mean,0.09362999999999999
+compactness_mean,0.1154
+concavity_mean,0.06636
+concave points_mean,0.03142
+symmetry_mean,0.1967
+fractal_dimension_mean,0.06314
+radius_se,0.2963
+texture_se,1.5630000000000002
+perimeter_se,2.0869999999999997
+area_se,21.46
+smoothness_se,0.008872
+compactness_se,0.04192
+concavity_se,0.05946
+concave points_se,0.01785
+symmetry_se,0.02793
+fractal_dimension_se,0.004775
+radius_worst,13.25
+texture_worst,27.1
+perimeter_worst,86.2
+area_worst,531.2
+smoothness_worst,0.1405
+compactness_worst,0.3046
+concavity_worst,0.2806
+concave points_worst,0.1138
+symmetry_worst,0.3397
+fractal_dimension_worst,0.08365
