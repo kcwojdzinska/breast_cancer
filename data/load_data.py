@@ -10,3 +10,6 @@ def load_data():
     y_train = train[column_with_labels]
     y_test = test[column_with_labels]
     return x_train, x_test, y_train, y_test
+
+if __name__=='__main__':
+    x_train, x_test, y_train, y_test = load_data()

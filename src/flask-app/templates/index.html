@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="shortcut icon" href="{{url_for('static', filename='css/images/tab_icon.png')}}">
+    <title>Breast cancer</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}"/>
+
+    <noscript>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/noscript.css')}}"/>
+    </noscript>
+</head>
+<body class="is-preload">
+
+		<div id="wrapper">
+
+				<header id="header" class="alt">
+					<span class="logo"><img src="images/logo.svg" alt="" /></span>
+				</header>
+
+			<section id="banner">
+
+				<div class="inner">
+					<header>
+						<!--<span><img src="/static/css/images/pink_ribbon.jpg" alt="Pink ribbon"></span>-->
+						<h2>Breast Cancer</h2>
+					</header>
+                    <p>Upload data and recognize cancer now</p>
+                    <div class="upload">
+
+                        <form method=post enctype=multipart/form-data>
+                          <input type=file name=file>
+                          <input type=submit value=Upload>
+                        </form>
+					</div>
+				</div>
+
+			</section>
+
+			<section>
+				<div class="inner">
+                    <header>
+					<p>Breast cancer tool uses <strong>machine learning</strong> algorithms <br>
+					to predict whether your cancer is benign or malignant <br>
+                        with accuracy of <strong>97.36%</strong> <br> </p>
+                    </header>
+				</div>
+			</section>
+
+				<footer id="footer">
+					<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+				</footer>
+
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+</body>
+</html>

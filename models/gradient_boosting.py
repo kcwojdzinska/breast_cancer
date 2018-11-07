@@ -11,6 +11,6 @@ def model_gradient_boosting(x_train, x_test, y_train, y_test):
     precision = precision_score(y_test, predictions_xgboost)
     recall = recall_score(y_test, predictions_xgboost)
     print("Accuracy XGBoost:", accuracy_xgboost)
-    print("Precision Logistic Regression:", precision)
-    print("Recall Logistic Regression:", recall)
+    print("Precision XGBoost:", precision)
+    print("Recall XGBoost:", recall)
     return xgboost

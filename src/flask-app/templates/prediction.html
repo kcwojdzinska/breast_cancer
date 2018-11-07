@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="shortcut icon" href="{{url_for('static', filename='css/images/tab_icon.png')}}">
+    <title>Breast cancer</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}"/>
+
+    <noscript>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/noscript.css')}}"/>
+    </noscript>
+</head>
+<body class="is-preload">
+
+		<div id="wrapper">
+
+				<header id="header" class="alt">
+					<span class="logo"><img src="images/logo.svg" alt="" /></span>
+				</header>
+
+			<section id="banner">
+
+
+			</section>
+
+			<section>
+				<div class="inner">
+					<header>
+						<h2>Breast Cancer</h2>
+					</header>
+					<p>Model prediction: <br>
+						There is <strong>{{ probability }} % </strong>  probability that cancer is <strong>{{ prediction }}</strong></p>
+
+				</div>
+			</section>
+
+				<footer id="footer">
+					<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+				</footer>
+
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+</body>
+</html>
