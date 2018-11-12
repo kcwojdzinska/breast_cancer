@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <link rel="shortcut icon" href="{{url_for('static', filename='css/images/tab_icon.png')}}">
     <title>Breast cancer</title>
@@ -23,17 +23,20 @@
 
 				<div class="inner">
 					<header>
-						<!--<span><img src="/static/css/images/pink_ribbon.jpg" alt="Pink ribbon"></span>-->
-						<h2>Breast Cancer</h2>
+						<img src="{{url_for('static', filename='ribbon2.png')}}" align="right" width="300" height="300"/>
+						<h1 style="font-size:280%;">Doctor's little helper</h1>
+
 					</header>
-                    <p>Upload data and recognize cancer now</p>
+                    <p style="font-size:120%;">Upload your patient's data and I'll help you to recognize breast cancer type correctly. <br>
+					I'll try to convince you that I'm right!</p>
                     <div class="upload">
 
                         <form method=post enctype=multipart/form-data>
                           <input type=file name=file>
                           <input type=submit value=Upload>
                         </form>
-					</div>
+
+            		</div>
 				</div>
 
 			</section>
@@ -41,9 +44,9 @@
 			<section>
 				<div class="inner">
                     <header>
-					<p>Breast cancer tool uses <strong>machine learning</strong> algorithms <br>
-					to predict whether your cancer is benign or malignant <br>
-                        with accuracy of <strong>97.36%</strong> <br> </p>
+					<p style="font-size:120%;">I use <strong>machine learning</strong> algorithms
+					to predict  <br> whether your patient's cancer is benign or malignant. <br>
+                        Accuracy of my prediction is really high - <strong>97.36 %.</strong> <br> </p>
                     </header>
 				</div>
 			</section>

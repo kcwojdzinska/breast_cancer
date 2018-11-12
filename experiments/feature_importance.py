@@ -12,7 +12,9 @@ features = data.drop(columns=['diagnosis'])
 def find_important_features(model):
     feature_imp_DF = pd.DataFrame({'feature': list(features.columns), 'importance': model.feature_importances_})
     importance = feature_imp_DF.sort_values(by=['importance'], ascending=False)
-    return importance
+    top_10 = importance.head(10)
+    top_10 = list(top_10.feature)
+    return importance, top_10
 
 
 def donut_plot(df):
@@ -29,5 +31,5 @@ def donut_plot(df):
 if __name__ == '__main__':
     x_train, x_test, y_train, y_test = load_data()
     model = model_gradient_boosting(x_train, x_test, y_train, y_test)
-    features_imp = find_important_features(model)
+    features_imp, top_10 = find_important_features(model)
     donut_plot(features_imp)
