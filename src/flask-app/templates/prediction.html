@@ -31,10 +31,18 @@
 						There is <strong>{{ probability }}% </strong> probability that your patient's cancer is <strong>{{ prediction }}</strong>.</p>
 				</div>
 				<div>
-    				<p style="float: left;"><img src={{url_for('static', filename='output_plot_to_display.png')}} width="550" height="500" border="5px"></p>
-					<p> <center><font size="4>"><br> <br> <br> <br> <br> <br>Plot shows values of most important features <br>and split them into groups based on cancer type. <br> Blue samples (class M) mean <font color="blue">malignant</font>, <br>
-					orange samples (class B) mean <font color="orange">benign</font>, <br>black sample is <font color="black">your patient's value</font>. <br> Have a look and simply check my analysis. <br> <br>
-					<a href="{{url_for('lime_output')}}">Go for more analysis</a></font></center></p>
+					<p style="float: left;"><img src="{{url_for('static', filename='lime_plot.png')}}" width="500" height="400" border="5px"/><br> </p>
+
+					<p align="center" style="font-size:120%;"> <br> <br> <br> Plot shows <strong> 10 </strong> features
+						with the biggest impact on prediction, <br>
+						where each bar symbolizes one of them. <br>
+						If bar is red, it means that <br>
+						there is higher probability for cancer being
+						<strong>benign</strong>, <br>
+						else if it is green, it is more likely for cancer to be
+						<strong>malignant</strong>. <br>
+					Have a look and simply check my analysis, <br>
+						but don't forget that you're a doctor! <br> <br> </p>
 				</div>
 			</section>
 

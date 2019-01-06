@@ -61,14 +61,8 @@ def predict():
     prediction, probability = predictor_log_reg(sample)
     prediction = map_prediction_to_string(prediction)
     probability = find_probability(probability)
-    visualize_one_sample(possible_path)
     # redirect(url_for('lime'))
     return render_template('prediction.html', prediction=prediction, probability=probability)
-
-
-@app.route('/lime_output', methods=['GET', 'POST'])
-def lime_output():
-    return render_template('lime_output.html', title='Further analysis')
 
 
 def preprocess_sample(path_to_sample):
@@ -86,30 +80,32 @@ def predictor_log_reg(sample):
     probability = fit_log_reg.predict_proba(sample)
     return prediction, probability
 
-def visualize_one_sample(path_to_sample):
-    path_to_data = "/Users/karola/PycharmProjects/breast_cancer/data/datasets/data.csv"
-    df, important_features = split_dataframe(path_to_data)
-    df_sample, important_features_sample = split_dataframe(path_to_sample)
-    labels = df.diagnosis
-    concat_data = pd.concat([important_features, important_features_sample])
-    standarized_data = (concat_data - concat_data.mean()) / (concat_data.std())
-    df1 = standarized_data[:-1]
-    df1_sample = standarized_data.iloc[-1]
-    df1_sample['diagnosis'] = 'test_sample'
-    df1_sample = df1_sample.to_frame()
-    df1_sample = df1_sample.T
-    to_concat = [df1, labels]
-    data_visualization = pd.concat(to_concat, axis=1)
-    plt.figure(figsize=(15,15))
-    data = pd.melt(data_visualization,id_vars="diagnosis",var_name="features",value_name='value')
-    data_sample = pd.melt(df1_sample,id_vars="diagnosis",var_name="features",value_name='value')
-    plt.xticks(rotation=90)
-    seaborn.swarmplot(x='features', y='value', hue='diagnosis', data=data).set_title('Distribution of most important '
-                                                                                     'features and test sample values')
-    seaborn.set_palette('bright')
-    seaborn.swarmplot(x='features', y='value', hue='diagnosis', data=data_sample, color='red')
-    plt.savefig("/Users/karola/PycharmProjects/breast_cancer/src/flask-app/static/output_plot_to_display.png",
-                bbox_inches='tight', dpi=500)
+#
+# def visualize_one_sample(path_to_sample):
+#     path_to_data = "/Users/karola/PycharmProjects/breast_cancer/data/datasets/data.csv"
+#     df, important_features = split_dataframe(path_to_data)
+#     df_sample, important_features_sample = split_dataframe(path_to_sample)
+#     labels = df.diagnosis
+#     concat_data = pd.concat([important_features, important_features_sample])
+#     standarized_data = (concat_data - concat_data.mean()) / (concat_data.std())
+#     df1 = standarized_data[:-1]
+#     df1_sample = standarized_data.iloc[-1]
+#     df1_sample['diagnosis'] = 'test_sample'
+#     df1_sample = df1_sample.to_frame()
+#     df1_sample = df1_sample.T
+#     df1_sample = dataframe_rename(df1_sample)
+#     to_concat = [df1, labels]
+#     data_visualization = pd.concat(to_concat, axis=1)
+#     data_visualization = dataframe_rename(data_visualization)
+#     data = pd.melt(data_visualization,id_vars="diagnosis",var_name="features",value_name='value')
+#     data_sample = pd.melt(df1_sample,id_vars="diagnosis",var_name="features",value_name='value')
+#     plt.xticks(rotation=90)
+#     seaborn.swarmplot(x='features', y='value', hue='diagnosis', data=data).set_title('Distribution of most important '
+#                                                                                      'features and test sample values')
+#     plt.ylim(-4, 8)
+#     seaborn.swarmplot(x='features', y='value', hue='diagnosis', data=data_sample, color='red')
+#     plt.savefig("/Users/karola/PycharmProjects/breast_cancer/src/flask-app/static/output_plot_to_display3.png",
+#                 bbox_inches='tight', dpi=500)
 
 
 def split_dataframe(path_to_dataframe):
@@ -117,6 +113,13 @@ def split_dataframe(path_to_dataframe):
     important_features = df[['area_se', 'texture_mean', 'texture_worst', 'concave points_worst', 'concavity_worst',
                              'smoothness_worst', 'perimeter_worst', 'smoothness_mean', 'concave points_mean', 'area_worst']]
     return df, important_features
+
+
+def dataframe_rename(df):
+    return df.rename(index=str, columns={"area_se": 'a', "texture_mean": "b", "texture_worst": "c",
+                                         "concave points_worst": "d", "concavity_worst": "e", "smoothness_worst": "f",
+                                         "perimeter_worst": "g", "smoothness_mean": "h", "concave points_mean": "i",
+                                         "area_worst": "j"})
 
 
 def load_data():
@@ -145,7 +148,7 @@ def remove_files_in_dir(directory):
 
 
 def remove_files_in_dir_png(dir):
-    filelist = [f for f in os.listdir(dir) if f == 'output_plot_to_display.png']
+    filelist = [f for f in os.listdir(dir) if f == 'output_plot_to_display3.png']
     for f in filelist:
         os.remove(os.path.join(dir, f))
 

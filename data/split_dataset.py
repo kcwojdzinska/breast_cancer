@@ -28,3 +28,6 @@ def prepare_dataset_to_split(ratio=0.8):
     train.to_csv('train_set.csv', encoding='utf-8', index=False)
     test.to_csv('test_set.csv', encoding='utf-8', index=False)
     return train, test
+
+if __name__=='__main__':
+    prepare_dataset_to_split(ratio=0.8)

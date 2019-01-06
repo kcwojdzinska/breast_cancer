@@ -17,14 +17,17 @@ def visualize_one_sample(path_to_sample):
     df1_sample['diagnosis'] = 'test_sample'
     df1_sample = df1_sample.to_frame()
     df1_sample = df1_sample.T
+    df1_sample = dataframe_rename(df1_sample)
     to_concat = [df1, labels]
     data_visualization = pd.concat(to_concat, axis=1)
-    plt.figure(figsize=(10,10))
+    data_visualization = dataframe_rename(data_visualization)
+    # plt.figure(figsize=(10,10))
     data = pd.melt(data_visualization,id_vars="diagnosis",var_name="features",value_name='value')
     data_sample = pd.melt(df1_sample,id_vars="diagnosis",var_name="features",value_name='value')
     plt.xticks(rotation=90)
     seaborn.swarmplot(x='features', y='value', hue='diagnosis', data=data).set_title('Distribution of most important '
                                                                                      'features and test sample values')
+    plt.ylim(-4, 8)
     seaborn.swarmplot(x='features', y='value', hue='diagnosis', data=data_sample, color='red')
     plt.savefig("/Users/karola/PycharmProjects/breast_cancer/src/flask-app/static/output_plot_to_display.png",
                 bbox_inches='tight', dpi=500)
@@ -37,5 +40,12 @@ def split_dataframe(path_to_dataframe):
     return df, important_features
 
 
+def dataframe_rename(df):
+    return df.rename(index=str, columns={"area_se": 'a', "texture_mean": "b", "texture_worst": "c",
+                                         "concave points_worst": "d", "concavity_worst": "e", "smoothness_worst": "f",
+                                         "perimeter_worst": "g", "smoothness_mean": "h", "concave points_mean": "i",
+                                         "area_worst": "j"})
+
+
 if __name__ == '__main__':
-    visualize_one_sample('/Users/karola/PycharmProjects/breast_cancer/src/flask-app/uploaded/sample.csv')
+    visualize_one_sample('/Users/karola/PycharmProjects/breast_cancer/src/flask-app/uploaded/sample45.csv')
